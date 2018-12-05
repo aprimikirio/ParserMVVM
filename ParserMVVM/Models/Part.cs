@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ParserMVVM.Models
 {
@@ -62,9 +63,9 @@ namespace ParserMVVM.Models
                 OnPropertyChanged("Specs");
             }
         }
-
-        /*
+        [System.ComponentModel.DataAnnotations.Schema.NotMapped]
         public List<LinkPart> linkParts { get; set; }
+        [System.ComponentModel.DataAnnotations.Schema.NotMapped]
         public List<LinkPart> LinkParts
         {
             get { return linkParts; }
@@ -74,7 +75,18 @@ namespace ParserMVVM.Models
                 OnPropertyChanged("LinkParts");
             }
         }
-        */
+        [System.ComponentModel.DataAnnotations.Schema.NotMapped]
+        private string linkArt { get; set; }
+        [System.ComponentModel.DataAnnotations.Schema.NotMapped]
+        public string LinkArt
+        {
+            get { return linkArt; }
+            set
+            {
+                linkArt = value;
+                OnPropertyChanged("LinkArt");
+            }
+        }
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName]string prop = "")
         {

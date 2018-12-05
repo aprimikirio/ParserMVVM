@@ -38,7 +38,9 @@ namespace ParserMVVM.Models
             }
         }
 
+        [System.ComponentModel.DataAnnotations.Schema.NotMapped]
         private Part part { get; set; }
+        [System.ComponentModel.DataAnnotations.Schema.NotMapped]
         public Part Part
         {
             get { return part; }

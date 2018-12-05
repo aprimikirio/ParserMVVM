@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ParserMVVM"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="511" Width="525">
     <Window.Resources>
         <Style TargetType="TextBlock">
             <Setter Property="FontSize" Value="14" />
@@ -14,40 +14,56 @@
             <Setter Property="FontSize" Value="14" />
         </Style>
     </Window.Resources>
-    
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="0.8*" />
-        </Grid.ColumnDefinitions>
 
-        <ListBox Grid.Column="0" ItemsSource="{Binding Parts}"
+    <Grid>
+        <Grid Name="MainGrid">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="28"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <TextBox Name="CodeTxtBx" Grid.Column="0" Grid.Row="0"/>
+            <ListView  Name="CodeLstBx" Grid.Column="0" Grid.Row="1" ItemsSource="{Binding Parts}"
                  SelectedItem="{Binding SelectedPart}">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Margin="5">
-                        <TextBlock FontSize="18" Text="{Binding Path=Art}" />
-                        <TextBlock Text="{Binding Path=Brand}" />
-                        <TextBlock Text="{Binding Path=Name}" />
-                        <TextBlock Text="{Binding Path=Specs}" />
-                        <TextBlock Text="{Binding Path=Url}" />
-                    </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
-        
-        <StackPanel Grid.Column="1" DataContext="{Binding SelectedPart}">
-            <TextBlock Text="Выбранный элемент"  />
-            <TextBlock Text="Art" />
-            <TextBox Text="{Binding Art, UpdateSourceTrigger=PropertyChanged}" />
-            <TextBlock Text="Brand" />
-            <TextBox Text="{Binding Brand, UpdateSourceTrigger=PropertyChanged}" />
-            <TextBlock Text="Name" />
-            <TextBox Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" />
-            <TextBlock Text="Specs" />
-            <TextBox Text="{Binding Specs, UpdateSourceTrigger=PropertyChanged}" />
-            <TextBlock Text="Url" />
-            <TextBox Text="{Binding Url, UpdateSourceTrigger=PropertyChanged}" />
-        </StackPanel>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal" Margin="5">
+                            <TextBlock Text="{Binding Path=Art}" />
+                            <TextBlock Text="{Binding Path=Brand}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListView >
+
+            <TextBox Name="NameTxtBx" Grid.Column="1" Grid.Row="0"/>
+            <ListView  Name="NameLstBx" Grid.Column="1" Grid.Row="1" ItemsSource="{Binding Parts}"
+                 SelectedItem="{Binding SelectedPart}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal" Margin="5">
+                            <TextBlock Text="{Binding Path=Name}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListView>
+
+            <TextBox Name="LnkPrtsTxtBx" Grid.Column="2" Grid.Row="0"/>
+
+            <ListView  Name="LnkPrtsLstBx" Grid.Column="2" Grid.Row="1" ItemsSource="{Binding Parts}"
+                 SelectedItem="{Binding SelectedPart}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal" Margin="5">
+                            <TextBlock Text="{Binding Path=LinkArt}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListView>
+        </Grid>
     </Grid>
 </Window>
