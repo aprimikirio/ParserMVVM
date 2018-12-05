@@ -25,10 +25,10 @@ namespace ParserMVVM.ViewModels
 
         public PartViewModel()
         {
-            Parts = new ObservableCollection<Part>
-            {
-                new Part { Art = db.Parts.FirstOrDefault().Art, Brand = db.Parts.FirstOrDefault().Brand, Name = db.Parts.FirstOrDefault().Name, Specs = "TestSpecs", Url = db.Parts.FirstOrDefault().Url }
-            };
+            Parts = new ObservableCollection<Part>();
+
+            foreach (var item in db.Parts.ToList())
+                Parts.Add(item);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
