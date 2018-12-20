@@ -45,7 +45,7 @@ namespace ParserMVVM.ViewModels
 
             foreach(string log in logLines)
             {
-                Part addingPart = db.Parts.Where(a => a.Art.Replace(".", string.Empty) == log).FirstOrDefault();
+                Part addingPart = db.Parts.Where(a => a.Art.Replace(".", string.Empty).Contains(log)).FirstOrDefault();
                 if (addingPart != null)
                 {
                     foreach (LinkPart lPart in db.LinkParts.Where(a => a.PartArt == addingPart.Art))

@@ -12,7 +12,7 @@ namespace ParserMVVM.Models
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=Parser.ConsoleApp.DB;Trusted_Connection=True;");
+            optionsBuilder.UseMySQL("server=localhost;UserId=root;Password=2128506;database=partsdb;");
         }
     }
 }
